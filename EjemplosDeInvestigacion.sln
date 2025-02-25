@@ -1,25 +1,40 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.13.35806.99 d17.13
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EjemplosDeInvestigacion", "EjemplosDeInvestigacion\EjemplosDeInvestigacion.csproj", "{FA884662-62CB-425C-9D43-6E59CBC96167}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FA884662-62CB-425C-9D43-6E59CBC96167}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FA884662-62CB-425C-9D43-6E59CBC96167}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FA884662-62CB-425C-9D43-6E59CBC96167}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FA884662-62CB-425C-9D43-6E59CBC96167}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {2DE949A0-7F9B-424B-9BC9-1815CD2EAE7C}
-	EndGlobalSection
-EndGlobal
+using System;
+
+class FactorialCalculator
+{
+    // Método para calcular el factorial de manera recursiva
+    public long CalcularFactorial(int numero)
+    {
+        if (numero < 0)
+            throw new ArgumentException("El factorial no está definido para números negativos.");
+
+        if (numero == 0 || numero == 1)
+            return 1;
+
+        return numero * CalcularFactorial(numero - 1);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        try
+        {
+            // Instancia de la clase FactorialCalculator
+            FactorialCalculator calculadora = new FactorialCalculator();
+
+            // Solicitar al usuario un número
+            Console.Write("\n\tIngrese un número para calcular su factorial: ");
+            int numero = int.Parse(Console.ReadLine());
+
+            // Calcular el factorial e imprimir el resultado
+            long resultado = calculadora.CalcularFactorial(numero);
+            Console.WriteLine($"\n\tEl factorial de {numero} es: {resultado}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+    }
+}
